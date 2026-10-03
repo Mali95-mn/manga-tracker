@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mein Manga-Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- LOGIN-BEREICH -->
+<div id="auth-container">
+
+    <h2>Manga Tracker</h2>
+
+    <div id="login-form">
+        <h3>Anmelden</h3>
+
+        <input
+            type="email"
+            id="login-email"
+            placeholder="E-Mail-Adresse"
+        >
+
+        <input
+            type="password"
+            id="login-password"
+            placeholder="Passwort"
+        >
+
+        <button id="login-button">Anmelden</button>
+
+        <p id="login-message"></p>
+
+        <p>
+            Noch kein Konto?
+            <button id="show-register-button">
+                Registrieren
+            </button>
+        </p>
+    </div>
+
+
+    <div id="register-form" style="display: none;">
+        <h3>Registrieren</h3>
+
+        <input
+            type="email"
+            id="register-email"
+            placeholder="E-Mail-Adresse"
+        >
+
+        <input
+            type="password"
+            id="register-password"
+            placeholder="Passwort"
+        >
+
+        <button id="register-button">Konto erstellen</button>
+
+        <p id="register-message"></p>
+
+        <p>
+            Bereits ein Konto?
+            <button id="show-login-button">
+                Zur Anmeldung
+            </button>
+        </p>
+    </div>
+
+</div>
+
+    <!-- ==================== HEADER ==================== -->
+
+    <header class="header">
+
+        <div class="header-inner">
+
+            <div>
+                <h1>📚 Mein Manga-Tracker</h1>
+                <p>Meine persönliche Manga-Sammlung</p>
+            </div>
+
+            <button id="addMangaButton" class="primary-button">
+                + Manga hinzufügen
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================== HAUPTBEREICH ==================== -->
+
+    <main class="container">
+
+
+        <!-- ==================== STATISTIK ==================== -->
+
+        <section class="dashboard">
+
+            <div class="stat-card">
+                <span class="stat-icon">📚</span>
+                <div>
+                    <span id="mangaCount" class="stat-number">0</span>
+                    <span class="stat-label">Manga</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">📖</span>
+                <div>
+                    <span id="volumeCount" class="stat-number">0</span>
+                    <span class="stat-label">Bände</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">✅</span>
+                <div>
+                    <span id="readCount" class="stat-number">0</span>
+                    <span class="stat-label">gelesen</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">⭐</span>
+                <div>
+                    <span id="averageRating" class="stat-number">–</span>
+                    <span class="stat-label">Ø Bewertung</span>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ==================== SUCHEN & FILTERN ==================== -->
+
+        <section class="controls">
+
+            <div class="search-container">
+
+                <span class="search-icon">🔎</span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Manga suchen..."
+                >
+
+            </div>
+
+
+            <select id="statusFilter">
+
+                <option value="all">Alle Status</option>
+                <option value="laufend">Laufend</option>
+                <option value="abgeschlossen">Abgeschlossen</option>
+                <option value="pausiert">Pausiert</option>
+                <option value="abgebrochen">Abgebrochen</option>
+                <option value="wunschliste">Wunschliste</option>
+
+            </select>
+
+
+            <select id="genreFilter">
+
+                <option value="all">Alle Genres</option>
+
+            </select>
+
+
+            <select id="sortSelect">
+
+                <option value="titleAsc">Titel A–Z</option>
+                <option value="titleDesc">Titel Z–A</option>
+                <option value="ratingDesc">Bewertung ↓</option>
+                <option value="ratingAsc">Bewertung ↑</option>
+                <option value="progressDesc">Fortschritt ↓</option>
+                <option value="progressAsc">Fortschritt ↑</option>
+                <option value="newest">Zuletzt hinzugefügt</option>
+
+            </select>
+
+        </section>
+
+
+        <!-- ==================== SAMMLUNG ==================== -->
+
+        <section class="collection-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Meine Sammlung</h2>
+                    <p id="resultInfo">0 Manga</p>
+                </div>
+
+            </div>
+
+
+            <div id="mangaGrid" class="manga-grid">
+
+                <!-- Manga werden hier per JavaScript eingefügt -->
+
+            </div>
+
+
+            <!-- Wird angezeigt, wenn keine Manga vorhanden sind -->
+
+            <div id="emptyState" class="empty-state">
+
+                <div class="empty-icon">📚</div>
+
+                <h3>Noch keine Manga vorhanden</h3>
+
+                <p>
+                    Füge deinen ersten Manga hinzu und baue
+                    deine persönliche Sammlung auf.
+                </p>
+
+                <button id="emptyAddButton" class="primary-button">
+                    + Ersten Manga hinzufügen
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== DATEN ==================== -->
+
+        <section class="data-section">
+
+            <h2>Datenverwaltung</h2>
+
+            <div class="data-buttons">
+
+                <button id="exportButton" class="secondary-button">
+                    ⬇️ Sammlung exportieren
+                </button>
+
+                <button id="importButton" class="secondary-button">
+                    ⬆️ Sammlung importieren
+                </button>
+
+                <button id="deleteAllButton" class="danger-button">
+                    🗑️ Alle Daten löschen
+                </button>
+
+            </div>
+
+            <input
+                type="file"
+                id="importFile"
+                accept=".json"
+                hidden
+            >
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== MODAL: MANGA HINZUFÜGEN ==================== -->
+
+    <div id="mangaModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="modalTitle">Manga hinzufügen</h2>
+
+                <button id="closeModalButton" class="close-button">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="mangaForm">
+
+                <input type="hidden" id="mangaId">
+
+
+                <div class="form-group">
+
+                    <label for="title">
+                        Titel *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        required
+                        placeholder="z. B. Berserk"
+                    >
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="author">
+                            Autor
+                        </label>
+
+                        <input
+                            type="text"
+                            id="author"
+                            placeholder="z. B. Kentaro Miura"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="publisher">
+                            Verlag
+                        </label>
+
+                        <input
+                            type="text"
+                            id="publisher"
+                            placeholder="z. B. Panini"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="volumeTotal">
+                            Anzahl Bände
+                        </label>
+
+                        <input
+                            type="number"
+                            id="volumeTotal"
+                            min="0"
+                            value="0"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="volumeRead">
+                            Gelesene Bände
+                        </label>
+
+                        <input
+                            type="number"
+                            id="volumeRead"
+                            min="0"
+                            value="0"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="status">
+                            Status
+                        </label>
+
+                        <select id="status">
+
+                            <option value="laufend">
+                                Laufend
+                            </option>
+
+                            <option value="abgeschlossen">
+                                Abgeschlossen
+                            </option>
+
+                            <option value="pausiert">
+                                Pausiert
+                            </option>
+
+                            <option value="abgebrochen">
+                                Abgebrochen
+                            </option>
+
+                            <option value="wunschliste">
+                                Wunschliste
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="rating">
+                            Bewertung
+                        </label>
+
+                        <select id="rating">
+
+                            <option value="0">Keine Bewertung</option>
+                            <option value="1">⭐</option>
+                            <option value="2">⭐⭐</option>
+                            <option value="3">⭐⭐⭐</option>
+                            <option value="4">⭐⭐⭐⭐</option>
+                            <option value="5">⭐⭐⭐⭐⭐</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="genre">
+                        Genre
+                    </label>
+
+                    <input
+                        type="text"
+                        id="genre"
+                        placeholder="z. B. Action, Fantasy"
+                    >
+
+                    <small>
+                        Mehrere Genres mit Komma trennen.
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="cover">
+                        Cover-URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="cover"
+                        placeholder="https://..."
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="notes">
+                        Notizen
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        rows="4"
+                        placeholder="Deine Notizen..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="cancelButton"
+                        class="secondary-button"
+                    >
+                        Abbrechen
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Manga speichern
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================== MODAL: DETAILS ==================== -->
+
+    <div id="detailsModal" class="modal hidden">
+
+        <div class="modal-content details-content">
+
+            <div class="modal-header">
+
+                <h2 id="detailsTitle">Manga</h2>
+
+                <button
+                    id="closeDetailsButton"
+                    class="close-button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div id="detailsBody">
+
+                <!-- Wird per JavaScript gefüllt -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+   <script src="script.js"></script>
+
+</body>
+
+</html>

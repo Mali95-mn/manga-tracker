@@ -1,0 +1,784 @@
+/* =========================================================
+   GRUNDLAGEN
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f5f7;
+    color: #202124;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    background: white;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 24px 20px;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.header p {
+    margin: 6px 0 0;
+    color: #777;
+}
+
+
+/* =========================================================
+   HAUPTBEREICH
+========================================================= */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+.primary-button {
+    background: #4f46e5;
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.primary-button:hover {
+    background: #4338ca;
+    transform: translateY(-1px);
+}
+
+.secondary-button {
+    background: white;
+    color: #333;
+
+    padding: 11px 16px;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 9px;
+
+    font-size: 14px;
+}
+
+.secondary-button:hover {
+    background: #f5f5f5;
+}
+
+.danger-button {
+    background: #fff0f0;
+    color: #c62828;
+
+    padding: 11px 16px;
+
+    border: 1px solid #f1c2c2;
+    border-radius: 9px;
+
+    font-size: 14px;
+}
+
+.danger-button:hover {
+    background: #ffe1e1;
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 28px;
+}
+
+.stat-card {
+    background: white;
+
+    border: 1px solid #e8e8e8;
+    border-radius: 14px;
+
+    padding: 22px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.stat-icon {
+    font-size: 28px;
+}
+
+.stat-number {
+    display: block;
+
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.stat-label {
+    display: block;
+
+    color: #777;
+    font-size: 14px;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================================
+   SUCHFELD UND FILTER
+========================================================= */
+
+.controls {
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 30px;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-container input {
+    width: 100%;
+
+    padding: 12px 15px 12px 42px;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 9px;
+
+    background: white;
+
+    font-size: 15px;
+}
+
+.search-icon {
+    position: absolute;
+
+    left: 14px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 16px;
+}
+
+.controls select {
+    padding: 12px;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 9px;
+
+    background: white;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   SAMMLUNG
+========================================================= */
+
+.collection-section {
+    margin-top: 20px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.section-heading p {
+    margin: 5px 0 0;
+    color: #777;
+}
+
+
+/* =========================================================
+   MANGA GRID
+========================================================= */
+
+.manga-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   MANGA CARD
+========================================================= */
+
+.manga-card {
+    background: white;
+
+    border: 1px solid #e6e6e6;
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.05);
+
+    transition: 0.2s;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.manga-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.09);
+}
+
+.manga-cover {
+    width: 100%;
+    height: 280px;
+
+    object-fit: cover;
+
+    background: #e8e8e8;
+}
+
+.manga-cover-placeholder {
+    width: 100%;
+    height: 280px;
+
+    background: #e9e9e9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 50px;
+}
+
+.manga-card-content {
+    padding: 16px;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.manga-title {
+    font-size: 18px;
+    font-weight: bold;
+
+    margin: 0 0 6px;
+}
+
+.manga-author {
+    font-size: 13px;
+    color: #777;
+
+    margin-bottom: 12px;
+}
+
+.manga-meta {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-bottom: 12px;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    background: #f0f0f0;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.progress-container {
+    margin-top: auto;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 12px;
+    color: #666;
+
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 7px;
+
+    background: #e9e9e9;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+
+    background: #4f46e5;
+
+    border-radius: 10px;
+
+    transition: width 0.3s;
+}
+
+.rating {
+    margin-bottom: 10px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+
+    margin-top: 15px;
+}
+
+.card-button {
+    flex: 1;
+
+    padding: 9px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+}
+
+.details-button {
+    background: #f0f0f0;
+}
+
+.edit-button {
+    background: #eef0ff;
+    color: #4038b8;
+}
+
+.delete-button {
+    background: #fff0f0;
+    color: #c62828;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-state {
+    text-align: center;
+
+    background: white;
+
+    border: 2px dashed #ddd;
+
+    border-radius: 14px;
+
+    padding: 60px 20px;
+
+    display: none;
+}
+
+.empty-icon {
+    font-size: 55px;
+
+    margin-bottom: 15px;
+}
+
+.empty-state h3 {
+    margin: 0 0 8px;
+}
+
+.empty-state p {
+    color: #777;
+
+    max-width: 450px;
+
+    margin: 0 auto 20px;
+}
+
+
+/* =========================================================
+   DATENVERWALTUNG
+========================================================= */
+
+.data-section {
+    margin-top: 50px;
+
+    background: white;
+
+    border: 1px solid #e6e6e6;
+    border-radius: 14px;
+
+    padding: 22px;
+}
+
+.data-section h2 {
+    margin-top: 0;
+}
+
+.data-buttons {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 650px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.close-button {
+    background: transparent;
+
+    font-size: 30px;
+
+    color: #777;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+}
+
+.close-button:hover {
+    background: #f1f1f1;
+}
+
+
+/* =========================================================
+   FORMULAR
+========================================================= */
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-row {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 15px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border: 1px solid #d5d5d5;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    background: white;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #888;
+}
+
+.form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.details-content {
+    max-width: 750px;
+}
+
+.details-cover {
+    width: 180px;
+    height: 260px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+}
+
+.details-top {
+    display: flex;
+
+    gap: 25px;
+
+    margin-bottom: 25px;
+}
+
+.details-info {
+    flex: 1;
+}
+
+.details-info h3 {
+    margin-top: 0;
+}
+
+.details-row {
+    margin-bottom: 9px;
+}
+
+.details-label {
+    font-weight: bold;
+}
+
+.details-notes {
+    background: #f5f5f5;
+
+    padding: 15px;
+
+    border-radius: 9px;
+
+    white-space: pre-wrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .manga-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .dashboard {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .controls {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .controls {
+        grid-template-columns: 1fr;
+    }
+
+    .manga-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .container {
+        padding: 20px 12px 40px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .manga-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .manga-cover {
+        height: 350px;
+    }
+
+    .manga-cover-placeholder {
+        height: 350px;
+    }
+
+    .details-top {
+        flex-direction: column;
+    }
+
+    .details-cover {
+        width: 100%;
+        height: 350px;
+    }
+
+}
