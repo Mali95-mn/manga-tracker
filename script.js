@@ -5,8 +5,8 @@
    Aktuelle Speicherung:
    localStorage
 
-   SpÃ¤ter:
-   Supabase fÃ¼r Online-Speicherung
+   Später:
+   Supabase für Online-Speicherung
 ========================================================= */
 
 
@@ -91,7 +91,7 @@ registerButton.addEventListener("click", async () => {
     }
 
     registerMessage.textContent =
-        "Registrierung erfolgreich! Bitte bestÃ¤tige deine E-Mail-Adresse.";
+        "Registrierung erfolgreich! Bitte best&aumltige deine E-Mail-Adresse.";
 });
 
 
@@ -438,7 +438,7 @@ async function saveManga() {
 
 
 /* =========================================================
-   MANGA HINZUFÃœGEN
+   MANGA HINZUFÜGEN
 ========================================================= */
 
 addMangaButton.addEventListener(
@@ -457,7 +457,7 @@ function openAddModal() {
     editingMangaId = null;
 
     modalTitle.textContent =
-        "Manga hinzufÃ¼gen";
+        "Manga hinzuf&uumlgen";
 
     mangaForm.reset();
 
@@ -719,7 +719,7 @@ function editManga(id) {
 
 
 /* =========================================================
-   MANGA LÃ–SCHEN
+   MANGA LÖSCHEN
 ========================================================= */
 
 async function deleteManga(id) {
@@ -736,7 +736,7 @@ async function deleteManga(id) {
 
     const confirmed =
         confirm(
-            `MÃ¶chtest du "${manga.title}" wirklich lÃ¶schen?`
+            `M&oumlchtest du "${manga.title}" wirklich l&oumlschen?`
         );
 
 
@@ -856,7 +856,7 @@ function showDetails(id) {
                     </span>
 
                     ${escapeHTML(
-                        manga.publisher || "â€“"
+                        manga.publisher || "-“"
                     )}
                 </div>
 
@@ -898,7 +898,7 @@ function showDetails(id) {
                     ${manga.volumeRead}
                     /
                     ${manga.volumeTotal}
-                    BÃ¤nde
+                    B&aumlnde
                 </div>
 
 
@@ -939,7 +939,7 @@ function showDetails(id) {
                 class="secondary-button"
                 onclick="closeDetailsModal()"
             >
-                SchlieÃŸen
+                Schließen
             </button>
 
             <button
@@ -986,7 +986,7 @@ function render() {
 
             emptyState.querySelector("p")
                 .textContent =
-                "Ã„ndere deine Suche oder die Filter.";
+                "&Aumlndere deine Suche oder die Filter.";
 
             emptyState.querySelector("button")
                 .style.display = "none";
@@ -999,7 +999,7 @@ function render() {
 
             emptyState.querySelector("p")
                 .textContent =
-                "FÃ¼ge deinen ersten Manga hinzu und baue deine persÃ¶nliche Sammlung auf.";
+                "F&uumlge deinen ersten Manga hinzu und baue deine pers&oumlnliche Sammlung auf.";
 
             emptyState.querySelector("button")
                 .style.display = "inline-block";
@@ -1148,7 +1148,7 @@ function createMangaCard(manga) {
                         ${manga.volumeRead}
                         /
                         ${manga.volumeTotal}
-                        BÃ¤nde
+                        B&aumlnde
                     </span>
 
                     <span>
@@ -1192,7 +1192,7 @@ function createMangaCard(manga) {
                     class="card-button delete-button"
                     onclick="deleteManga('${manga.id}')"
                 >
-                    LÃ¶schen
+                    L&oumlschen
                 </button>
 
             </div>
@@ -1842,7 +1842,7 @@ importFile.addEventListener(
                     ) {
 
                         throw new Error(
-                            "UngÃ¼ltige Datei"
+                            "Ung&uumlltige Datei"
                         );
 
                     }
@@ -1850,7 +1850,7 @@ importFile.addEventListener(
 
                     const confirmed =
                         confirm(
-                            "MÃ¶chtest du diese Sammlung importieren? Deine aktuelle Sammlung wird ersetzt."
+                            "M&oumlchtest du diese Sammlung importieren? Deine aktuelle Sammlung wird ersetzt."
                         );
 
 
@@ -1904,7 +1904,7 @@ importFile.addEventListener(
 
 
 /* =========================================================
-   ALLE DATEN LÃ–SCHEN
+   ALLE DATEN LÖSCHEN
 ========================================================= */
 
 deleteAllButton.addEventListener(
@@ -1926,7 +1926,7 @@ deleteAllButton.addEventListener(
 
         const confirmed =
             confirm(
-                "ACHTUNG: Dadurch wird deine komplette Manga-Sammlung gelÃ¶scht. MÃ¶chtest du wirklich fortfahren?"
+                "ACHTUNG: Dadurch wird deine komplette Manga-Sammlung gel&oumlscht. M&oumlchtest du wirklich fortfahren?"
             );
 
 
@@ -1937,7 +1937,7 @@ deleteAllButton.addEventListener(
 
         const secondConfirmation =
             confirm(
-                "Wirklich ALLE Manga lÃ¶schen?"
+                "Wirklich ALLE Manga l&oumlschen?"
             );
 
 
