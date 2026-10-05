@@ -409,6 +409,7 @@ async function saveManga() {
         notes: manga.notes || ""
     }));
 
+    console.log("ROWS:", JSON.stringify(rows, null, 2));
 
     const {
         error: insertError
