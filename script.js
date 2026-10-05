@@ -376,7 +376,7 @@ async function saveManga() {
 
     const rows = mangaList.map(manga => ({
 
-        id: Number(manga.id),
+        id: crypto.randomUUID(),
 
         user_id: user.id,
 
