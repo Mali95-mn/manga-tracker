@@ -816,7 +816,7 @@ function showDetails(id) {
 
         coverHTML = `
             <div class="manga-cover-placeholder">
-                ðŸ“š
+                ***
             </div>
         `;
 
@@ -845,7 +845,7 @@ function showDetails(id) {
                     </span>
 
                     ${escapeHTML(
-                        manga.author || "â€“"
+                        manga.author || "-“"
                     )}
                 </div>
 
@@ -1052,7 +1052,7 @@ function createMangaCard(manga) {
     const stars =
         manga.rating > 0
             ? "â­".repeat(manga.rating)
-            : "â€“";
+            : "-“";
 
 
     let coverHTML;
@@ -1072,7 +1072,7 @@ function createMangaCard(manga) {
                 class="manga-cover-placeholder"
                 style="display:none"
             >
-                ðŸ“š
+                ***
             </div>
         `;
 
@@ -1080,7 +1080,7 @@ function createMangaCard(manga) {
 
         coverHTML = `
             <div class="manga-cover-placeholder">
-                ðŸ“š
+                ***
             </div>
         `;
 
@@ -1437,7 +1437,7 @@ function updateStatistics() {
 
 
     let average =
-        "â€“";
+        "-“";
 
 
     if (ratedManga.length > 0) {
